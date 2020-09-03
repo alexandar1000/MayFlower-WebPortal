@@ -1,12 +1,13 @@
 import React from 'react';
 import {
-    BrowserRouter as Router,
+    // BrowserRouter as Router,
     Switch,
     Route,
-    Link,
-    // useRouteMatch,
-    // useParams
+    // Link,
   } from "react-router-dom";
+import LandingPage from './LandingPage';
+import ControlCentre from './ControlCentre';
+import HistoricalData from './HistoricalData';
 
 
 class MainView extends React.Component {
@@ -16,23 +17,13 @@ class MainView extends React.Component {
                 <div>
                     <Switch>
                         <Route path="/control-centre">
-                            <h1>Control Centre</h1>
-                            <Link to="/">Home</Link>
+                            <ControlCentre/>
                         </Route>
                         <Route path="/historical-data">
-                            <h1>Historical Data</h1>
-                            <Link to="/">Home</Link>
+                            <HistoricalData/>
                         </Route>
                         <Route path="/">
-                        <h1>Welcome to the Web Platform for the MayFlower Project!</h1>
-                        <ul>
-                            <li>
-                                <Link to="/control-centre">About</Link>
-                            </li>
-                            <li>
-                                <Link to="/historical-data">Topics</Link>
-                            </li>
-                        </ul>
+                            <LandingPage/>
                         </Route>
                     </Switch>
                 </div>

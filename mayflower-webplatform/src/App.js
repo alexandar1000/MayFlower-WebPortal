@@ -9,9 +9,9 @@ import MenuIcon from '@material-ui/icons/Menu';
 import MainView from './Components/MainView';
 import {
   BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
+  // Switch,
+  // Route,
+  // Link,
 } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
@@ -25,6 +25,9 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     textAlign: 'left',
   },
+  mainView: {
+    height: '100vh'
+  }
 }));
 
 function App() {
