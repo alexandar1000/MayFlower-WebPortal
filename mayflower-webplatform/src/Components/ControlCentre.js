@@ -61,9 +61,7 @@ class ControlCentre extends React.Component {
                         <VideoFeed></VideoFeed>
                     </Grid>
                     <Grid item xs={3}>
-                        <Card className={classes.root}>
-                            <BoatControls></BoatControls>
-                        </Card>
+                        <BoatControls></BoatControls>
                     </Grid>
                 </Grid>
                 <Grid 
