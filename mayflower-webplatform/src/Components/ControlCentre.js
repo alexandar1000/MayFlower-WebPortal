@@ -1,9 +1,10 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import VideoFeed from './CurrentOverview/VideoFeed'
-import Thermometer from './CurrentOverview/Thermometer'
-import Gps from './CurrentOverview/Gps'
-import Battery from './CurrentOverview/Battery'
+import VideoFeed from './CurrentOverview/VideoFeed';
+import Thermometer from './CurrentOverview/Thermometer';
+import Gps from './CurrentOverview/Gps';
+import Battery from './CurrentOverview/Battery';
+import BoatControls from './Controls/BoatControls';
 import { 
     Card,
     Grid
@@ -48,12 +49,11 @@ class ControlCentre extends React.Component {
         const {classes} = this.props;
         return (
             <div>
-                
                 <Grid 
                     container 
                     direction="row"
                     justify="center"
-                    alignItems="center"
+                    alignItems="baseline"
                     spacing={2}
                     className={classes.grid}
                 >
@@ -62,7 +62,7 @@ class ControlCentre extends React.Component {
                     </Grid>
                     <Grid item xs={3}>
                         <Card className={classes.root}>
-                            <h1>cotrolls</h1>
+                            <BoatControls></BoatControls>
                         </Card>
                     </Grid>
                 </Grid>
