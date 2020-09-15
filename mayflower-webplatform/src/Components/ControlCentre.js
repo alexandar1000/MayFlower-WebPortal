@@ -57,7 +57,7 @@ class ControlCentre extends React.Component {
                     spacing={2}
                     className={classes.grid}
                 >
-                    <Grid item xs={7}>
+                    <Grid item xs={6}>
                         <VideoFeed></VideoFeed>
                     </Grid>
                     <Grid item xs={3}>
