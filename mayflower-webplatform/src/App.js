@@ -4,14 +4,10 @@ import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
 import MainView from './Components/MainView';
 import {
   BrowserRouter as Router,
-  // Switch,
-  // Route,
-  // Link,
+  Link,
 } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
@@ -23,11 +19,16 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     flexGrow: 1,
-    textAlign: 'left',
+    textAlign: 'left'
   },
   mainView: {
     height: '100vh'
+  },
+  logoName: {
+    textDecoration: 'none',
+    color: "white"
   }
+
 }));
 
 function App() {
@@ -35,19 +36,16 @@ function App() {
 
   return (
     <div className="App">
+    <Router>
       <AppBar position="static">
         <Toolbar>
-          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-            <MenuIcon />
-          </IconButton>
           <Typography variant="h6" className={classes.title}>
-            MayFlower Web Platform
+            <Link to="/" className={classes.logoName}>MayFlower Web Platform</Link>
           </Typography>
         </Toolbar>
       </AppBar>
-      <Router>
-        <MainView/>
-      </Router>
+      <MainView/>
+    </Router>
     </div>
   );
 }

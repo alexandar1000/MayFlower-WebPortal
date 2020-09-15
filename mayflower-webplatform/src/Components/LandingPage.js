@@ -33,7 +33,6 @@ import {
     link: {
         textDecoration: 'none'
     }
-
   });
   
   class LandingPage extends React.Component {
