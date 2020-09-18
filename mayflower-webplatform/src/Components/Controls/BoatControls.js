@@ -21,9 +21,6 @@ class BoatControls extends React.Component {
         axios.post('http://localhost:8000/api/v1/controls/command/', {
             command: 'a'
           })
-        //   .then(function (response) {
-        //     console.log(response);
-        //   })
     }
 
     
@@ -31,9 +28,6 @@ class BoatControls extends React.Component {
         axios.post('http://localhost:8000/api/v1/controls/command/', {
             command: 'd'
           })
-        //   .then(function (response) {
-        //     console.log(response);
-        //   })
     }
 
 
@@ -41,18 +35,38 @@ class BoatControls extends React.Component {
         axios.post('http://localhost:8000/api/v1/controls/command/', {
             command: 's'
           })
-        //   .then(function (response) {
-        //     console.log(response);
-        //   })
     }
 
     forward() {
         axios.post('http://localhost:8000/api/v1/controls/command/', {
             command: 'w'
           })
-        //   .then(function (response) {
-        //     console.log(response);
-        //   })
+    }
+
+    handleKeyControl(event) {
+        let key = event.key;
+        switch(key) {
+            case 'w':
+                this.forward();
+                break;
+            case 's':
+                this.reverse();
+                break;
+            case 'a':
+                this.left();
+                break;
+            case 'd':
+                this.right();
+                break;
+        }
+    }
+
+    componentDidMount() {
+        document.addEventListener('keydown', this.handleKeyControl.bind(this));
+    }
+
+    componentWillUnmount() {
+        document.removeEventListener('keydown', this.handleKeyControl);
     }
 
 
@@ -121,7 +135,7 @@ class BoatControls extends React.Component {
                         <Card className={classes.root}>
                             <Button variant="contained" onClick={() => { this.reverse() }}>
                                 <Typography>
-                                    Backward
+                                    Stop
                                 </Typography>
                             </Button> 
                         </Card>
