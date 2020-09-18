@@ -1,5 +1,7 @@
 import React from 'react';
+import axios from 'axios';
 import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
 
 import { 
     Card,
@@ -15,6 +17,45 @@ const styles = theme => ({
   });
 
 class BoatControls extends React.Component {
+    left() {
+        axios.post('http://localhost:8000/api/v1/controls/command/', {
+            command: 'a'
+          })
+        //   .then(function (response) {
+        //     console.log(response);
+        //   })
+    }
+
+    
+    right() {
+        axios.post('http://localhost:8000/api/v1/controls/command/', {
+            command: 'd'
+          })
+        //   .then(function (response) {
+        //     console.log(response);
+        //   })
+    }
+
+
+    reverse() {
+        axios.post('http://localhost:8000/api/v1/controls/command/', {
+            command: 's'
+          })
+        //   .then(function (response) {
+        //     console.log(response);
+        //   })
+    }
+
+    forward() {
+        axios.post('http://localhost:8000/api/v1/controls/command/', {
+            command: 'w'
+          })
+        //   .then(function (response) {
+        //     console.log(response);
+        //   })
+    }
+
+
     render() {
         const {classes} = this.props;
         return (
@@ -33,9 +74,11 @@ class BoatControls extends React.Component {
                 >
                     <Grid item xs={5}>
                         <Card className={classes.root}>
-                            <Typography>
-                                Forward
-                            </Typography>
+                            <Button variant="contained" onClick={() => { this.forward() }}>
+                                <Typography>
+                                    Forward
+                                </Typography>
+                            </Button> 
                         </Card>
                     </Grid>
                 </Grid>
@@ -49,16 +92,20 @@ class BoatControls extends React.Component {
                 >
                     <Grid item xs={5}>
                         <Card className={classes.root}>
-                            <Typography>
-                                Left
-                            </Typography>
+                            <Button variant="contained" onClick={() => { this.left() }}>
+                                <Typography>
+                                    Left
+                                </Typography>
+                            </Button> 
                         </Card>
                     </Grid>
                     <Grid item xs={5}>
                         <Card className={classes.root}>
-                            <Typography>
-                                Right
-                            </Typography>
+                        <Button variant="contained" onClick={() => { this.right() }}>
+                                <Typography>
+                                    Right
+                                </Typography>
+                            </Button> 
                         </Card>
                     </Grid>
                 </Grid>
@@ -72,9 +119,11 @@ class BoatControls extends React.Component {
                 >
                     <Grid item xs={5}>
                         <Card className={classes.root}>
-                            <Typography>
-                                Backwards
-                            </Typography>
+                            <Button variant="contained" onClick={() => { this.reverse() }}>
+                                <Typography>
+                                    Backward
+                                </Typography>
+                            </Button> 
                         </Card>
                     </Grid>
                 </Grid>
