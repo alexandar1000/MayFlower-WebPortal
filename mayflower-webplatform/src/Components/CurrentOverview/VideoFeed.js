@@ -27,24 +27,11 @@ class VideoFeed extends React.Component {
 
     getLatestImage() {
         axios.get('http://localhost:8000/api/v1/video/')
-        // .then(res => res.blob())
         .then(res => {
-                // let outside = URL.createObjectURL(res)
-                // console.log(outside)
               this.setState({
-                //   image: res.data
                   keymg: this.state.keymg + 1
               })
           })
-
-//           fetch(fetchURL + image)
-//   //                         vvvv
-//   .then(response => response.blob())
-//   .then(images => {
-//       // Then create a local URL for that image and print it 
-//       outside = URL.createObjectURL(images)
-//       console.log(outside)
-//   })
     }
 
     componentDidMount() {
@@ -56,7 +43,7 @@ class VideoFeed extends React.Component {
       }
 
     componentWillUnmount() {
-        // clearInterval(this.state.interval);
+        clearInterval(this.state.interval);
     }
 
 
