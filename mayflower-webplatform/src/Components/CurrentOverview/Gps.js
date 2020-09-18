@@ -23,7 +23,7 @@ class Gps extends React.Component {
                 />
                 <CardContent>
                     <Typography>
-                        172 deg
+                        179.00; 120.12; 135
                     </Typography>
                 </CardContent>
             </Card>
