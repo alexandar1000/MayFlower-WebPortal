@@ -33,7 +33,7 @@ class TemperatureChart extends React.Component {
             }]
         }
     }
-    
+
     componentDidMount() {
         this.myChart = new Chart(this.canvasRef.current, {
             type: 'line',
