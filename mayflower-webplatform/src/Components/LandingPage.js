@@ -9,6 +9,7 @@ import {
     Typography,
     Grid
 } from '@material-ui/core';
+import MainScene from '../img/mainscene.png';
 
 
 
@@ -50,6 +51,9 @@ import {
                 >
                     <Grid item xs={12}>
                         <h1>Welcome to the Web Platform for the MayFlower Project!</h1>
+                    </Grid>
+                    <Grid item xs={12} justify="center">
+                        <img src={MainScene} alt="mainscene"/>
                     </Grid>
                     <Grid item xs={4}>
                         <Card className={classes.root}>

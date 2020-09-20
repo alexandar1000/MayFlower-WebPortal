@@ -21,7 +21,7 @@ class Thermometer extends React.Component {
       }
 
     getLatestTemperature() {
-        axios.get(`http://localhost:8000/api/v1/temperatures/0/`)
+        axios.get(`http://localhost:8000/api/v1/temperatures/current/`)
           .then(res => {
               this.setState({
                   temperature:  (Math.round(res.data.temperature * 100) / 100).toFixed(1)
