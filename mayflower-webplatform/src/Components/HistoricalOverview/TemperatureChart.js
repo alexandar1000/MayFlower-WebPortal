@@ -1,13 +1,13 @@
 import React from 'react';
 import Chart from 'chart.js';
+import axios from 'axios';
+import LineChart from './LineChart'
 import { withStyles } from '@material-ui/core/styles';
 
 import { 
     Card,
     CardContent,
-    CardHeader,
-    Typography,
-    Grid
+    CardHeader
   } from '@material-ui/core';
 
 
@@ -25,23 +25,38 @@ class TemperatureChart extends React.Component {
     constructor(props) {
         super(props);
         this.canvasRef = React.createRef();
-        this.chartData =  {
-            labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '12', '14'],
+        this.state = {temperaturesData: {}}
+    }
+
+    processTemperatures(rawValues) {
+        let labelsEntries = [];
+        let dataEntries = [];
+        for (let i = 0; i < rawValues.length; i++) {
+            dataEntries[i] = rawValues[i].temperature;
+            labelsEntries[i] = rawValues[i].id;
+        }
+        return {
+            labels: labelsEntries,
             datasets: [{
                 label: 'Temperatures',
-                data: [22.0, 22.1, 22.2, 22.1, 22.0, 21.8, 21.9, 21.4, 21.7, 22.0, 21.9, 22.1, 22.3, 22.4]
+                data: dataEntries
             }]
         }
+
     }
-    
+
+    getLatestTemperatures(chartRef) {
+        axios.get(`http://localhost:8000/api/v1/temperatures/`)
+          .then(res => {
+              let tempsChartData = this.processTemperatures(res.data);
+              this.setState({
+                temperaturesData: tempsChartData
+              })
+          })
+    }
+
     componentDidMount() {
-        this.myChart = new Chart(this.canvasRef.current, {
-            type: 'line',
-            data: this.chartData,
-            options: {
-                fill: false
-            }
-        });
+        this.getLatestTemperatures(this.myChart);
     }
 
     render() {
@@ -52,7 +67,7 @@ class TemperatureChart extends React.Component {
                     title="Data Overview"
                 />
                 <CardContent>
-                    <canvas ref={this.canvasRef}></canvas>
+                    <LineChart data={this.state.temperaturesData}></LineChart>
                 </CardContent>
             </Card>
         );

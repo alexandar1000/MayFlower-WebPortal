@@ -41,22 +41,12 @@ class ChartSettings extends React.Component {
                 />
                 <CardContent>
                     <FormControl className={classes.formControl}>
-                        <InputLabel shrink htmlFor="age-native-label-placeholder">
-                        Age
-                        </InputLabel>
                         <NativeSelect
-                        value={"Temperature"}
-                        // onChange={handleChange}
-                        inputProps={{
-                            name: 'age',
-                            id: 'age-native-label-placeholder',
-                        }}
-                        >
-                        <option value="Temperature">Temperature</option>
-                        <option value={1}>GPS</option>
-                        <option value={2}>Battery</option>
+                            value={"Temperature"}
+                            >
+                            <option value="Temperature">Temperature</option>
                         </NativeSelect>
-                        <FormHelperText>Label + placeholder</FormHelperText>
+                        <FormHelperText>Chart Type</FormHelperText>
                     </FormControl>
                 </CardContent>
             </Card>
