@@ -1,17 +1,13 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import InputLabel from '@material-ui/core/InputLabel';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
 import NativeSelect from '@material-ui/core/NativeSelect';
 
 import { 
     Card,
     CardContent,
-    CardHeader,
-    Typography,
-    Grid
+    CardHeader
   } from '@material-ui/core';
 
 
@@ -32,6 +28,19 @@ import {
     });
 
 class ChartSettings extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {selectedChart: "Temperature"}
+    }
+
+    handleChartChange= (event) => {
+        let newChartType = event.target.value
+        this.setState({
+          selectedChart: newChartType,
+        });
+        this.props.onChange(newChartType)
+    }
+
     render() {
         const {classes} = this.props;
         return (
@@ -42,9 +51,11 @@ class ChartSettings extends React.Component {
                 <CardContent>
                     <FormControl className={classes.formControl}>
                         <NativeSelect
-                            value={"Temperature"}
+                            value={this.state.selectedChart}
+                            onChange={this.handleChartChange}
                             >
                             <option value="Temperature">Temperature</option>
+                            <option value="Battery">Battery</option>
                         </NativeSelect>
                         <FormHelperText>Chart Type</FormHelperText>
                     </FormControl>

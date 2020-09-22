@@ -5,8 +5,7 @@ import Thermometer from './CurrentOverview/Thermometer';
 import Gps from './CurrentOverview/Gps';
 import Battery from './CurrentOverview/Battery';
 import BoatControls from './Controls/BoatControls';
-import { 
-    Card,
+import {
     Grid
   } from '@material-ui/core';
 

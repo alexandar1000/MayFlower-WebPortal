@@ -13,7 +13,9 @@ import {
 
 
 const styles = theme => ({
-
+    controlButton: {
+        width: '100%'
+    }
   });
 
 class BoatControls extends React.Component {
@@ -58,6 +60,8 @@ class BoatControls extends React.Component {
             case 'd':
                 this.right();
                 break;
+            default:
+                break;
         }
     }
 
@@ -88,7 +92,7 @@ class BoatControls extends React.Component {
                 >
                     <Grid item xs={5}>
                         <Card className={classes.root}>
-                            <Button variant="contained" onClick={() => { this.forward() }}>
+                            <Button className={classes.controlButton} variant="contained" onClick={() => { this.forward() }}>
                                 <Typography>
                                     Forward
                                 </Typography>
@@ -106,7 +110,7 @@ class BoatControls extends React.Component {
                 >
                     <Grid item xs={5}>
                         <Card className={classes.root}>
-                            <Button variant="contained" onClick={() => { this.left() }}>
+                            <Button className={classes.controlButton} variant="contained" onClick={() => { this.left() }}>
                                 <Typography>
                                     Left
                                 </Typography>
@@ -115,7 +119,7 @@ class BoatControls extends React.Component {
                     </Grid>
                     <Grid item xs={5}>
                         <Card className={classes.root}>
-                        <Button variant="contained" onClick={() => { this.right() }}>
+                        <Button className={classes.controlButton} variant="contained" onClick={() => { this.right() }}>
                                 <Typography>
                                     Right
                                 </Typography>
@@ -133,9 +137,9 @@ class BoatControls extends React.Component {
                 >
                     <Grid item xs={5}>
                         <Card className={classes.root}>
-                            <Button variant="contained" onClick={() => { this.reverse() }}>
+                            <Button className={classes.controlButton} variant="contained" onClick={() => { this.reverse() }}>
                                 <Typography>
-                                    Stop
+                                    Autopilot
                                 </Typography>
                             </Button> 
                         </Card>

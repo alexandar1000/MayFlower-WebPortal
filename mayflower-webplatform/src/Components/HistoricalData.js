@@ -1,13 +1,10 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import TemperatureChart from './HistoricalOverview/TemperatureChart';
+import BatteryChart from './HistoricalOverview/BatteryChart';
 import ChartSettings from './HistoricalOverview/ChartSettings';
 
-import { 
-    Card,
-    CardContent,
-    CardHeader,
-    Typography,
+import {
     Grid
   } from '@material-ui/core';
 
@@ -22,8 +19,33 @@ import {
     });
 
 class HistoricalData extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {chartType: "Temperature"}
+        this.handleChartChange = this.handleChartChange.bind(this);
+    }
+
+    handleChartChange(type) {
+        this.setState({
+            chartType: type
+        })
+    }
+
     render() {
         const {classes} = this.props;
+        let chart = null;
+        switch (this.state.chartType) {
+            case "Temperature":
+                chart = <TemperatureChart></TemperatureChart>
+                break;
+            case "Battery":
+                chart = <BatteryChart></BatteryChart>
+                break;
+            default:
+                chart = <TemperatureChart></TemperatureChart>
+                break;
+        }
+
         return (
             <div>
                 <Grid 
@@ -35,10 +57,10 @@ class HistoricalData extends React.Component {
                     className={classes.grid}
                 >
                     <Grid item xs={7}>
-                        <TemperatureChart></TemperatureChart>
+                        {chart}
                     </Grid>
                     <Grid item xs={3}>
-                        <ChartSettings></ChartSettings>
+                        <ChartSettings onChange={this.handleChartChange}></ChartSettings>
                     </Grid>
                 </Grid>
             </div>

@@ -8,10 +8,6 @@ import {
     CardMedia,
   } from '@material-ui/core';
 
-
-  import boatCamera from './camera.jpg';
-
-
 const styles = theme => ({
     media: {
         height: 0,

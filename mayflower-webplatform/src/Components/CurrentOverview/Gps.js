@@ -27,7 +27,7 @@ class Gps extends React.Component {
 
 
     componentDidMount() {
-        this.timer = setInterval(this.getCurrentGPS(), 1000);
+        this.timer = setInterval(this.getCurrentGPS, 1000);
     }
 
     componentWillUnmount() {
@@ -44,8 +44,6 @@ class Gps extends React.Component {
                     latitude: res.data.latitude,
                     longitude: res.data.longitude,
                     altitude: res.data.altitude
-                }).catch(err =>{
-                    console.log(err);
                 });
             });
     }
@@ -56,18 +54,23 @@ class Gps extends React.Component {
         let long = "1.4596 W";
         let alt = "54.0 M";
         const {latitude, longitude, altitude} = this.state;
-        if (latitude >= 0){
-            lat = Math.round(latitude, 4).toString() + " N";
-        }else {
-            lat = ((-1) * Math.round(latitude, 4)).toString() + " S";
+        if (latitude != null && longitude != null && altitude != null) {
+            if (latitude >= 0){
+                // lat = Math.round(latitude, 4).toString() + " N";
+                lat = latitude.toFixed(4) + " N";
+            }else {
+                // lat = ((-1) * Math.round(latitude, 4)).toString() + " S";
+                lat = ((-1) * latitude.toFixed(4)) + " S";
+            }
+            if (longitude >= 0){
+                // long = Math.round(longitude, 4).toString() + " E";
+                long = longitude.toFixed(4) + " E";
+            }else {
+                // long = ((-1) * Math.round(longitude, 4)).toString() + " W";
+                long = ((-1) * longitude.toFixed(4)) + " W";
+            }
+            alt = altitude.toFixed(1) + " M";
         }
-        if (longitude >= 0){
-            long = Math.round(longitude, 4).toString() + " E";
-        }else {
-            long = ((-1) * Math.round(longitude, 4)).toString() + " W";
-        }
-        alt = altitude.toString() + " M";
-
         return (
             <Card className={classes.root}>
                 <CardHeader

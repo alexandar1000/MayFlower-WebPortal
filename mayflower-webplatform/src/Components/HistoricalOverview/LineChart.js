@@ -1,16 +1,6 @@
 import React from 'react';
 import Chart from 'chart.js';
-import axios from 'axios';
 import { withStyles } from '@material-ui/core/styles';
-
-import { 
-    Card,
-    CardContent,
-    CardHeader,
-    Typography,
-    Grid
-  } from '@material-ui/core';
-
 
   const styles = theme => ({
     });
@@ -36,13 +26,16 @@ class LineChart extends React.Component {
 
     componentWillReceiveProps(nextProps, nextContext) {
         if (this.state.chart != null) {
-            this.state.chart.data = nextProps.data;
+            let helperChartState = this.state.chart;
+            helperChartState.data = nextProps.data;
+            this.setState({
+                chart: helperChartState
+            })
             this.state.chart.update();
         }
     }
 
     render() {
-        const {classes} = this.props;
         return (
             <canvas ref={this.canvasRef}></canvas>
         );

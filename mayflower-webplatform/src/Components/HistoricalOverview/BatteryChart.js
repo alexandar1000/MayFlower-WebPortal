@@ -19,19 +19,19 @@ import {
         }
     });
 
-class TemperatureChart extends React.Component {
+class BatteryChart extends React.Component {
 
     constructor(props) {
         super(props);
         this.canvasRef = React.createRef();
-        this.state = {temperaturesData: {}}
+        this.state = {batteryData: {}}
     }
 
-    processTemperatures(rawValues) {
+    processCharges(rawValues) {
         let labelsEntries = [];
         let dataEntries = [];
         for (let i = 0; i < rawValues.length; i++) {
-            dataEntries[i] = rawValues[i].temperature;
+            dataEntries[i] = rawValues[i].percentage;
             labelsEntries[i] = rawValues[i].id;
         }
         return {
@@ -44,18 +44,19 @@ class TemperatureChart extends React.Component {
 
     }
 
-    getLatestTemperatures(chartRef) {
-        axios.get(`http://localhost:8000/api/v1/temperatures/`)
+    getLatestCharges(chartRef) {
+        axios.get(`http://localhost:8000/api/v1/battery/`)
           .then(res => {
-              let tempsChartData = this.processTemperatures(res.data);
+              console.log(res);
+              let chargesChartData = this.processCharges(res.data);
               this.setState({
-                temperaturesData: tempsChartData
+                batteryData: chargesChartData
               })
           })
     }
 
     componentDidMount() {
-        this.getLatestTemperatures(this.myChart);
+        this.getLatestCharges(this.myChart);
     }
 
     render() {
@@ -66,11 +67,11 @@ class TemperatureChart extends React.Component {
                     title="Data Overview"
                 />
                 <CardContent>
-                    <LineChart data={this.state.temperaturesData}></LineChart>
+                    <LineChart data={this.state.batteryData}></LineChart>
                 </CardContent>
             </Card>
         );
     }
 }
 
-export default withStyles(styles, { withTheme: true })(TemperatureChart);
+export default withStyles(styles, { withTheme: true })(BatteryChart);

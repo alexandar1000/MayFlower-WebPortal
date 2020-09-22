@@ -18,7 +18,7 @@ class Battery extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            percentage: 70,
+            percentage: 100,
             timer: null
         }
         this.getCurrentBattery = this.getCurrentBattery.bind(this);
@@ -39,11 +39,7 @@ class Battery extends React.Component {
         await api.get(`http://localhost:8000/api/v1/battery/current/`)
             .then(res =>{
                 this.setState({
-                    percentage: res.data.percentage
-                }, ()=>{
-                    console.log(this.state.percentage);
-                }).catch(err =>{
-                    console.log(err);
+                    percentage: (Math.round(res.data.percentage * 10000) / 100).toFixed(1)
                 });
             });
     }
