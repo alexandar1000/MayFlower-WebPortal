@@ -52,7 +52,7 @@ import MainScene from '../img/mainscene.png';
                     <Grid item xs={12}>
                         <h1>Welcome to the Web Platform for the MayFlower Project!</h1>
                     </Grid>
-                    <Grid item xs={12} justify="center">
+                    <Grid item xs={12}>
                         <img src={MainScene} alt="mainscene"/>
                     </Grid>
                     <Grid item xs={4}>

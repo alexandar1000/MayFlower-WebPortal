@@ -38,8 +38,9 @@ class Battery extends React.Component {
         const api = axios.create();
         await api.get(`http://localhost:8000/api/v1/battery/current/`)
             .then(res =>{
+                console.log(res.data.percentage)
                 this.setState({
-                    percentage: (Math.round(res.data.percentage * 10000) / 100).toFixed(1)
+                    percentage: (res.data.percentage * 100)
                 });
             });
     }

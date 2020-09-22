@@ -24,8 +24,9 @@ class VideoFeed extends React.Component {
     getLatestImage() {
         axios.get('http://localhost:8000/api/v1/video/')
         .then(res => {
+            console.log(res);
               this.setState({
-                  keymg: this.state.keymg + 1
+                image: 'data:image/jpeg;base64,'+res.data
               })
           })
     }
@@ -51,10 +52,10 @@ class VideoFeed extends React.Component {
                     title="Video Feed"
                 />
                 <CardMedia
-                    key={this.state.keymg}
+                    // key={this.state.keymg}
                     className={classes.media}
-                    image={'http://localhost:8000/api/v1/video/'}
-                    // image={this.state.image}
+                    // image={'http://localhost:8000/api/v1/video/'}
+                    image={this.state.image}
                     title="Boat Camera"
                 />
                 {/* <img src={this.state.image}></img> */}

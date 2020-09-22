@@ -47,7 +47,6 @@ class BatteryChart extends React.Component {
     getLatestCharges(chartRef) {
         axios.get(`http://localhost:8000/api/v1/battery/`)
           .then(res => {
-              console.log(res);
               let chargesChartData = this.processCharges(res.data);
               this.setState({
                 batteryData: chargesChartData
